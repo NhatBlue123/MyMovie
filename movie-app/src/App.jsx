@@ -9,11 +9,13 @@ import MovieDetail from "./components/MovieDetail";
 import { ToastContainer } from "react-toastify";
 import { MovieProvider } from "./context/MovieProvider";
 import MovieSearch from "./components/MovieSearch";
+import AdminProvider from "./components/Admin/Context/AdminProvider";
 
 function App() {
 
   return (
     <MovieProvider>
+      <AdminProvider>
       <Router>
         <Routes>
           <Route path="/home" element={<Home />} />
@@ -26,6 +28,7 @@ function App() {
         </Routes>
         <ToastContainer/>
       </Router>
+      </AdminProvider>
     </MovieProvider>
   );
 }
