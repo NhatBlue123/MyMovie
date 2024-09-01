@@ -15,6 +15,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setIsLogin(true);
+      localStorage.setItem("isLogin","true");
       alert('User logged in Successfully');
       navigate("/adminDz");
     } catch (error) {
