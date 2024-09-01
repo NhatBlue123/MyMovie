@@ -69,7 +69,10 @@ const MovieDetail = () => {
               </nav>
             </div>
             <div className="mb-4">
-              <button className="w-[130px] h-[40px] border-2 text-yellow-400 border-yellow-400 rounded-[6px] hover:text-white hover:border-white">
+              <button className="w-[130px] h-[40px] border-2 text-yellow-400 border-yellow-400 rounded-[6px] hover:text-white hover:border-white"
+              onClick={()=>{
+                navigate(`/${original_title}/play`);
+              }}>
                 Play
               </button>
             </div>
