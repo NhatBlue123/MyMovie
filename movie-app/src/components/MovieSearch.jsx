@@ -1,12 +1,18 @@
 import PropTypes from "prop-types";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MovieContext } from "../context/MovieProvider";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 
 const MovieSearch = ({ title }) => {
-  const { movieSearch, handleDetail, handleSearch } = useContext(MovieContext);
+  const { movieSearch,setMovieSearch, handleDetail, handleSearch } = useContext(MovieContext);
   const navigate = useNavigate();
+  useEffect(() => {
+    const savedResults = localStorage.getItem("movieSearchResults");
+    if (savedResults) {
+      setMovieSearch(JSON.parse(savedResults));
+    }
+  }, [setMovieSearch]);
 
   return (
     <>
@@ -21,7 +27,7 @@ const MovieSearch = ({ title }) => {
                 className="w-[200px] h-[300px] relative group"
                 onClick={() => {
                   handleDetail(item.id);
-                  navigate("/detail");
+                  navigate(`/${item.original_title}/detail`);
                 }}
               >
                 <div className="group-hover:scale-105 transition-transform duration-500 ease-in-out w-full h-full cursor-pointer">

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Header({ onSearch }) {
   const [text, setText] = useState("");
-
+  
   const handleSearch = (e) => {
     setText(e.target.value);
   };
+//   useEffect(() => {
+//     searchStatus = localStorage.getItem("search");
+//  }, [setText]);
+
 
   const navigate = useNavigate();
 
@@ -38,7 +42,8 @@ export default function Header({ onSearch }) {
           className="p-2 text-white bg-red-600"
           onClick={() => {
             navigate("/result");
-            onSearch(text);
+            onSearch(searchStatus);
+            console.log(searchStatus);
           }}
         >
           Search

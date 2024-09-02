@@ -54,6 +54,7 @@ export const MovieProvider = ({ children }) => {
 
       const data = await response.json();
       setMovieSearch(data.results || []);
+      localStorage.setItem("movieSearchResults", JSON.stringify(data.results));
     } catch (error) {
       console.error("Failed to search movies:", error);
       setError("Failed to search movies.");
